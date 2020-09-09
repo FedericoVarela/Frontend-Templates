@@ -1,21 +1,18 @@
-FROM node:14-alpine
+FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY rollup.config.js ./
-COPY package.json yarn.lock ./
-
-RUN npm install -g yarn
+COPY package.json ./
+COPY yarn.lock ./
 
 RUN yarn
 
-COPY ./src ./src
-COPY ./public ./public
+RUN yarn build
 
-RUN yarn run build
+COPY . .
+
+ENV PORT=5000
 
 EXPOSE 5000
 
-ENV HOST=0.0.0.0
-
-CMD [ "yarn", "run start" ]
+CMD [ "yarn", "start" ]
