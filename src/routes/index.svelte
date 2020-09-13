@@ -1,13 +1,18 @@
 <script lang="ts" >
-	let titulo : string = "Template de Sapper"
+	let titulo : string = "Sapper Template"
 
-	const elementos : Array<[string, boolean]> = [
-		["Hola", true],
-		["Chau", false],
-		["Cosa", true],
-		["Si", false],
-		["AAAAAAAAAAAAAAAA", false],
-	]
+  type TODO = [string, boolean]
+
+	const todos : Array<TODO> = [
+		["Clone the template", true],
+		["Start the server", true],
+		["Finish app", false],
+  ]
+  
+    /* 
+    TODO: Docker
+    */
+
 </script>
 
 <style>
@@ -38,7 +43,7 @@
 
 <h2>Checklist</h2>
 <ul>
-	{#each elementos as [titulo, condition] }
-		<b>{titulo}</b> {@html condition ? "<span> ✓ </span>" : ""} <br>
+	{#each todos as [title, condition] }
+		<b>{title}</b> {@html condition ? "<span> ✓ </span>" : ""} <br>
 	{/each}
 </ul>
