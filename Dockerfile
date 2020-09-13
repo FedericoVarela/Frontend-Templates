@@ -5,14 +5,14 @@ WORKDIR /app
 COPY package.json ./
 COPY yarn.lock ./
 
-RUN yarn
+COPY . .
+
+RUN yarn install
 
 RUN yarn build
 
-COPY . .
-
 ENV PORT=5000
 
-EXPOSE 5000
+EXPOSE 5000 35729 3572
 
 CMD [ "yarn", "start" ]
