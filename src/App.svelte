@@ -2,26 +2,27 @@
   import { Router } from "@sveltech/routify";
   import { routes } from "../.routify/routes";
 
-  let hola : string = "Hola"
-  enum Si {
-    COSO,
-    AAAAAAAAA,
-    SI,
-    V_O_I_D
-  }
+  let name: string = "World";
 
-  const boludeces : Array<Si> = [
-    Si.COSO, Si.AAAAAAAAA, Si.AAAAAAAAA, Si.V_O_I_D
-  ]
+  type TODO = [string, boolean];
+  const todos: Array<TODO> = [
+    ["Clone the template", true],
+    ["Run the server", true],
+    ["Finish app", false],
+  ];
 </script>
 
-<style  global>
+<style global>
   @import "../static/global.css";
 </style>
 
-<h1>{hola}</h1>
 <Router {routes} />
 
-{#each boludeces as b }
-  {b}
-{/each}
+<main>
+  <h1>Hello {name}!</h1>
+  <ul>
+    {#each todos as t}
+      <li>{t[0]}: {t[1] ? '✓' : ''}</li>
+    {/each}
+  </ul>
+</main>
